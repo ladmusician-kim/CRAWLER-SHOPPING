@@ -1,0 +1,16 @@
+.ng-modal-container {
+    margin: 0 0 !important;
+}
+.ng-modal-admin-btn {
+    margin-right: 20px;
+}
+
+#ng-user-list li {
+    list-style: none;
+    padding: 10px ;
+    border-bottom: 1px solid #eeeeee;
+}
+#ng-user-list li:hover {
+    background: #eeeeee;
+    cursor: pointer;
+}

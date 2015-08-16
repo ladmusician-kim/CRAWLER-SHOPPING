@@ -1,5 +1,5 @@
 <?php
-class NG_Controller extends CI_Controller {
+class GQ_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
 

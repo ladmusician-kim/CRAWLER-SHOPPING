@@ -2,8 +2,10 @@
 
 require($_SERVER['DOCUMENT_ROOT'].'/CRAWLER/application/libraries/Snoopy.class.php');
 
-class Parse extends CI_Controller {
-    function __construct () {
+class Parse extends CI_Controller
+{
+    function __construct()
+    {
         parent::__construct();
         $this->load->model('product_model');
         $this->output->set_header("Content-Type: text/html; charset=UTF-8;");
@@ -15,15 +17,16 @@ class Parse extends CI_Controller {
         echo "test";
     }
 
-    function test () {
-        $this->product_model->get();
-    }
-
-    function parsing () {
-        $debug_val = false;
+    function parsing()
+    {
+        $debug_val = true;
         $snoopy = new Snoopy;
 
+        $this->login($snoopy);
+
         $snoopy->fetch('http://innofun.com/mall/m_mall_list.php?ps_ctid=03000000&ps_ctid_2=&ps_search=&ps_company=&ps_brand=&ps_min_money=&ps_max_money=&ps_line=&sType=m&sType=m&skinmode=&ps_page=1');
+
+        var_dump($snoopy->results);
 
         $split_table = '<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="border-bottom:1 solid #EFEFEF">';
         $arr_split_by_table = explode($split_table, $snoopy->results);
@@ -37,14 +40,14 @@ class Parse extends CI_Controller {
 
         $idx = 0;
 
-        foreach($arr_split_by_table as $each) {
+        foreach ($arr_split_by_table as $each) {
             if ($idx != 0) {
                 $arr_split_by_href = explode($split_for_href, $each);
 
                 $arr_for_category_label = explode('</b>', explode($split_for_category, $arr_split_by_href[2])[1]);
 
                 $item_url = explode($split_for_item_url, $arr_split_by_href[1])[0];
-                $img_uri = explode('" border',explode($split_for_img_uri, $arr_split_by_href[1])[1])[0];
+                $img_uri = explode('" border', explode($split_for_img_uri, $arr_split_by_href[1])[1])[0];
                 $img_uri = substr($img_uri, 1, strlen($img_uri) - 1);
                 $category = $arr_for_category_label[0];
                 $category_1 = explode($split_for_category_1, $arr_for_category_label[1])[0];
@@ -53,21 +56,22 @@ class Parse extends CI_Controller {
                 $options = $this->__parse_option($arr_split_by_href[3]);
 
                 if ($debug_val == true) {
-                    $this->__print_debug($idx,$item_url, $img_uri, $category .trim($category_1), $label, $options);
+                    $this->__print_debug($idx, $item_url, $img_uri, $category . trim($category_1), $label, $options);
                 } else {
-                    $this->__insert_db($idx,$item_url, $img_uri, $category .trim($category_1), $label, $options);
+                    $this->__insert_db($idx, $item_url, $img_uri, $category . trim($category_1), $label, $options);
                 }
             }
             $idx++;
         }
     }
 
-    function __parse_option ($data) {
+    function __parse_option($data)
+    {
         $options = array();
         $total_options = explode('<select name="uid_goods_option1[]" onchange="javascript:option_view();">', $data)[1];
 
         $option_with_dummy = explode('</option>', $total_options);
-        for($i = 0; $i < count($option_with_dummy); $i++) {
+        for ($i = 0; $i < count($option_with_dummy); $i++) {
             $each = $option_with_dummy[$i];
             if (isset(explode("\">", $each)[1]) && strlen(trim(explode("\">", $each)[1])) < 50) {
                 $option = trim(explode("\">", $each)[1]);
@@ -77,8 +81,9 @@ class Parse extends CI_Controller {
         return $options;
     }
 
-    function __insert_db ($idx, $item_url, $img_uri, $category, $label, $options) {
-        $input_data = array (
+    function __insert_db($idx, $item_url, $img_uri, $category, $label, $options)
+    {
+        $input_data = array(
             'category' => $category,
             'label' => $label,
             'img_url' => $img_uri,
@@ -96,8 +101,9 @@ class Parse extends CI_Controller {
         }
     }
 
-    function __print_debug ($idx, $item_url, $img_uri, $category, $label, $options) {
-        echo $idx ."\n";
+    function __print_debug($idx, $item_url, $img_uri, $category, $label, $options)
+    {
+        echo $idx . "\n";
         echo '<p></p>';
         var_dump($item_url);
         echo '<p></p>';
@@ -115,22 +121,13 @@ class Parse extends CI_Controller {
         echo '<p></p>';
     }
 
-    function login () {
-        $snoopy = new Snoopy();
-        $snoopy->httpmethod = "POST";
-        $uri = 'http://innofun.com/mall/m_login_ok.php';
-        $snoopy->rawheaders['Content-Type']="application/x-www-form-urlencoded";
+    function login($snoopy)
+    {
+        $vars['login_id'] = "goqual";
+        $vars['login_pass'] = "rhznjfflxl1";
 
-        $auth['login_id'] = 'goqual';
-        $auth['login_pass'] = 'rhznjfflxl1';
-
-        var_dump($auth);
-
-        $snoopy->submit($uri, $auth);
-
+        $submit_url = "http://innofun.com/mall/m_login_ok.php";
+        $snoopy->submit($submit_url, $vars);
         $snoopy->setcookies();
-
-        $snoopy->fetch($uri);
-        var_dump($snoopy->results);
     }
 }

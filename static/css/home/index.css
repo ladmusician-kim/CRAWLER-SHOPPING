@@ -1,0 +1,102 @@
+.gq-home-section {
+    padding: 60px 0 60px 0;
+    background: #fafafa;
+    font-size: 25px;
+}
+
+/* product */
+.gq-product-section {
+    padding: 60px 0 60px 0;
+    margin: 0 auto;
+}
+.gq-product-section .container {
+    margin: 0 auto;
+}
+.gq-product-section .item {
+    display: table;
+}
+.gq-product-section .item .img{
+    float: left;
+}
+.gq-product-section .item .info {
+    padding: 20px 0;
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+}
+.gq-product-section .item .sub-info {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+}
+.gq-product-section .item .category, .label {
+    color: #000;
+}
+
+
+/* item */
+.gq-product-ul {
+    list-style: none;
+    padding-left: 0px !important;
+}
+.gq-product-ul .gq-product-li {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.gq-product-ul .gq-product-li .inner{
+    width: 100%;
+    background-color: white;
+    display: inline-block;
+    border-radius: 6px;
+    box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.1);
+    -webkit-box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.gq-product-ul .gq-product-li .inner .gq-product-item-img {
+    width: 100%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.gq-product-ul .gq-product-li .inner .gq-product-item-container {
+    padding: 10px;
+    background: white;
+    margin: 0 !important;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.gq-product-ul .gq-product-li .inner .gq-product-item-container .title {
+    display: block;
+    color: #969696;
+    font-size: 15px;
+    padding: 0 0 8px 7px;
+    border-bottom: 1px solid #ececec;
+    min-height: 50px;
+}
+.gq-product-ul .gq-product-li .inner .gq-product-item-container .category{
+    font-size: 11px;
+    color: #9a9a9a;
+    padding: 0 0 8px 7px;
+    display: block;
+    min-height: 50px;
+}
+.gq-product-ul .gq-product-li .inner .gq-product-item-container .info {
+    padding: 15px 0 10px 7px;
+    font-size: 12px;
+    display: block;
+    color: #7b7b7b;
+    position: relative;
+}
+.gq-product-ul .gq-product-li .inner .gq-product-item-container .gq-share-btn {
+    float:right;
+    position: absolute;
+    top: 12px;
+    right: 7px;
+}
+
+
+/* mobile */
+@media only screen and (max-width: 600px) {
+    .gq-product-section {
+        padding: 10px 0 10px 0;
+    }
+}

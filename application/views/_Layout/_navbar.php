@@ -1,84 +1,25 @@
-<!-- LEFT NAV -->
-<nav class="menu" id="menu">
-    <div class="menu-scroll">
-        <div class="menu-wrap">
-            <div class="menu-content">
-                <a class="menu-logo" href="index.html">Material</a>
-                <ul class="nav">
-                    <li>
-                        <a href="ui-card.html">Cards</a>
-                    </li>
-                    <li>
-                        <a href="ui-collapse.html">Collapsible Regions</a>
-                    </li>
-                    <li>
-                        <a href="ui-dropdown.html">Dropdowns</a>
-                    </li>
-                    <li>
-                        <a href="ui-modal.html">Modals &amp; Toasts</a>
-                    </li>
-                    <li>
-                        <a href="ui-nav.html">Navs</a>
-                    </li>
-                    <li>
-                        <a href="ui-progress.html">Progress Bars</a>
-                    </li>
-                    <li>
-                        <a href="ui-tab.html">Tabs</a>
-                    </li>
-                    <li>
-                        <a href="ui-tile.html">Tiles</a>
-                    </li>
-                </ul>
-                <hr>
-                <ul class="nav">
-                    <li>
-                        <a href="ui-button.html">Buttons</a>
-                    </li>
-                    <li>
-                        <a href="ui-form.html">Form Elements</a>
-                        <span class="menu-collapse-toggle collapsed" data-target="#form-elements" data-toggle="collapse"><i class="icon menu-collapse-toggle-close">close</i><i class="icon menu-collapse-toggle-default">add</i></span>
-                        <ul class="menu-collapse collapse" id="form-elements">
-                            <li>
-                                <a href="ui-form-adv.html">Form Elements <small>(materialised)</small></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="ui-icon.html">Icons</a>
-                    </li>
-                    <li>
-                        <a href="ui-table.html">Tables</a>
-                    </li>
-                </ul>
-                <hr>
-                <ul class="nav">
-                    <li>
-                        <a href="page-affix.html">Full-Width Page <small>(with fixed LHC/RHC)</small></a>
-                    </li>
-                    <li>
-                        <a href="page-palette.html">Page Palettes</a>
-                        <span class="menu-collapse-toggle collapsed" data-target="#page-palettes" data-toggle="collapse"><i class="icon menu-collapse-toggle-close">close</i><i class="icon menu-collapse-toggle-default">add</i></span>
-                        <ul class="menu-collapse collapse" id="page-palettes">
-                            <li>
-                                <a href="page-palette-blue.html">Blue Palette</a>
-                            </li>
-                            <li>
-                                <a href="page-palette-green.html">Green Palette</a>
-                            </li>
-                            <li>
-                                <a href="page-palette-purple.html">Purple Palette</a>
-                            </li>
-                            <li>
-                                <a href="page-palette-red.html">Red Palette</a>
-                            </li>
-                            <li>
-                                <a href="page-palette-yellow.html">Yellow Palette</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+<nav class="navbar navbar-default gq-navbar gq-main-navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="<?php echo base_url() ?>home">
+                <img src="/static/img/gq_ci_black.png" >
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse gq-navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav navbar-right gq-main-menu-nav">
+                <li><a href="<?php echo base_url() ?>home">GOQUAL</a></li>
+                <li><a href="<?php echo base_url() ?>report">보도자료</a></li>
+                <li><a href="<?php echo base_url() ?>core">GOQUAL 블로그</a></li>
+                <li><a href="<?php echo base_url() ?>designer">디자인 블로그</a></li>
+                <li><a href="<?php echo base_url() ?>developer">개발 블로그</a></li>
+            </ul>
         </div>
     </div>
 </nav>
